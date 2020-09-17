@@ -29,7 +29,7 @@ public class ObjectIteratorTest {
 
   @Test
   public void test1() {
-    loop = ObjectIterator.getLoop(items);
+    loop = ObjectIterator.getLoop(items, false);
     assertEquals(false, loop.hasNext());
     assertEquals(0, loop.getLength());
   }
@@ -37,21 +37,21 @@ public class ObjectIteratorTest {
   @Test
   public void test2() {
     items = "hello";
-    loop = ObjectIterator.getLoop(items);
+    loop = ObjectIterator.getLoop(items, false);
     assertEquals(1, loop.getLength());
   }
 
   @Test
   public void test3() {
     items = 2;
-    loop = ObjectIterator.getLoop(items);
+    loop = ObjectIterator.getLoop(items, false);
     assertEquals(1, loop.getLength());
   }
 
   @Test
   public void test4() {
     items = new Integer[] { 7, 8, 9 };
-    loop = ObjectIterator.getLoop(items);
+    loop = ObjectIterator.getLoop(items, false);
     assertEquals(3, loop.getLength());
     loop.next();
     assertEquals(8, loop.next());
@@ -60,7 +60,7 @@ public class ObjectIteratorTest {
   @Test
   public void test5() {
     items = new String[] { "jan", "god" };
-    loop = ObjectIterator.getLoop(items);
+    loop = ObjectIterator.getLoop(items, false);
     assertEquals(2, loop.getLength());
     assertEquals("jan", loop.next());
     assertEquals("god", loop.next());
@@ -73,7 +73,7 @@ public class ObjectIteratorTest {
     items.add("world");
     items.add("jinjava");
     items.add("asfun");
-    loop = ObjectIterator.getLoop(items);
+    loop = ObjectIterator.getLoop(items, false);
     assertEquals(4, loop.getLength());
     assertEquals("hello", loop.next());
   }
@@ -86,7 +86,7 @@ public class ObjectIteratorTest {
     items.put(2, 2);
     items.put("ko", "ko");
     items.put("test", new ObjectIteratorTest());
-    loop = ObjectIterator.getLoop(items);
+    loop = ObjectIterator.getLoop(items, false);
     assertEquals(5, loop.getLength());
   }
 }

@@ -51,7 +51,7 @@ public class UniqueFilter implements Filter {
       attr = args[0];
     }
 
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
     while (loop.hasNext()) {
       Object val = loop.next();
       Object key = val;

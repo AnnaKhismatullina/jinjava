@@ -136,11 +136,11 @@ public class ForTag implements Tag {
       loopExpr,
       tagNode.getLineNumber()
     );
-    ForLoop loop = ObjectIterator.getLoop(collection);
+    ForLoop loop = ObjectIterator.getLoop(collection, interpreter.getConfig().isIterateOverMapKeys());
 
     try (InterpreterScopeClosable c = interpreter.enterScope()) {
       if (interpreter.isValidationMode() && !loop.hasNext()) {
-        loop = ObjectIterator.getLoop(new DummyObject());
+        loop = ObjectIterator.getLoop(new DummyObject(), interpreter.getConfig().isIterateOverMapKeys());
         interpreter.getContext().setValidationMode(true);
       }
 

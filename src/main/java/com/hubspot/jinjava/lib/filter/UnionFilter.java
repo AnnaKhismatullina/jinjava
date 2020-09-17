@@ -36,7 +36,7 @@ public class UnionFilter extends AbstractSetFilter {
     Map<String, Object> kwargs
   ) {
     return new ArrayList<>(
-      Sets.union(objectToSet(var), objectToSet(parseArgs(interpreter, args)))
+      Sets.union(objectToSet(var, interpreter.getConfig()), objectToSet(parseArgs(interpreter, args), interpreter.getConfig()))
     );
   }
 

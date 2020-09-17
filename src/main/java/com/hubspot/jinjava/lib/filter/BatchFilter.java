@@ -74,7 +74,7 @@ public class BatchFilter implements Filter {
 
     Object fillWith = args.length > 1 ? args[1] : null;
 
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
     List<List<Object>> result = new ArrayList<>();
     List<Object> currentRow = null;
 

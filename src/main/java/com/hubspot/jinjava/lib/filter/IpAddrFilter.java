@@ -141,7 +141,7 @@ public class IpAddrFilter implements Filter {
     Object object
   ) {
     List<String> filteredItems = new ArrayList<>();
-    ForLoop loop = ObjectIterator.getLoop(object);
+    ForLoop loop = ObjectIterator.getLoop(object, interpreter.getConfig().isIterateOverMapKeys());
 
     while (loop.hasNext()) {
       String filteredItem = filterItem(interpreter, parameter, loop.next());

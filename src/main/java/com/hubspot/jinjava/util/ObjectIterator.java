@@ -26,7 +26,7 @@ public final class ObjectIterator {
   private ObjectIterator() {}
 
   @SuppressWarnings("unchecked")
-  public static ForLoop getLoop(Object obj) {
+  private static ForLoop getLoop(Object obj) {
     if (obj == null) {
       return new ForLoop(Collections.emptyIterator(), 0);
     }
@@ -40,11 +40,6 @@ public final class ObjectIterator {
       Object[] arr = (Object[]) obj;
       return new ForLoop(Iterators.forArray(arr), arr.length);
     }
-    // map
-    if (obj instanceof Map) {
-      Collection<Object> clt = ((Map<Object, Object>) obj).values();
-      return new ForLoop(clt.iterator(), clt.size());
-    }
     // iterable,iterator
     if (obj instanceof Iterable) {
       return new ForLoop(((Iterable<Object>) obj).iterator());
@@ -54,5 +49,17 @@ public final class ObjectIterator {
     }
     // others
     return new ForLoop(Iterators.singletonIterator(obj), 1);
+  }
+
+  @SuppressWarnings("unchecked")
+  public static ForLoop getLoop(Object obj, boolean iterateOverMapKeys) {
+    if (obj instanceof Map) {
+      Collection<Object> clt = iterateOverMapKeys
+              ? ((Map<Object, Object>) obj).keySet()
+              : ((Map<Object, Object>) obj).values();
+      return new ForLoop(clt.iterator(), clt.size());
+    }
+
+    return getLoop(obj);
   }
 }

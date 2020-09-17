@@ -36,7 +36,7 @@ public class IntersectFilter extends AbstractSetFilter {
     Map<String, Object> kwargs
   ) {
     return new ArrayList<>(
-      Sets.intersection(objectToSet(var), objectToSet(parseArgs(interpreter, args)))
+      Sets.intersection(objectToSet(var, interpreter.getConfig()), objectToSet(parseArgs(interpreter, args), interpreter.getConfig()))
     );
   }
 

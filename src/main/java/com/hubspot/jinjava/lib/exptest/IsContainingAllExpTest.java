@@ -26,7 +26,7 @@ public class IsContainingAllExpTest extends CollectionExpTest {
       return false;
     }
 
-    ForLoop loop = ObjectIterator.getLoop(args[0]);
+    ForLoop loop = ObjectIterator.getLoop(args[0], interpreter.getConfig().isIterateOverMapKeys());
     while (loop.hasNext()) {
       Object matchValue = loop.next();
       if (

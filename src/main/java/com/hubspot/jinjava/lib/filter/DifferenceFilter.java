@@ -36,7 +36,10 @@ public class DifferenceFilter extends AbstractSetFilter {
     Map<String, Object> kwargs
   ) {
     return new ArrayList<>(
-      Sets.difference(objectToSet(var), objectToSet(parseArgs(interpreter, args)))
+      Sets.difference(
+        objectToSet(var, interpreter.getConfig()),
+        objectToSet(parseArgs(interpreter, args), interpreter.getConfig())
+      )
     );
   }
 

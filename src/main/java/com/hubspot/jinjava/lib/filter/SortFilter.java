@@ -80,7 +80,7 @@ public class SortFilter implements Filter {
       ? DOT_SPLITTER.splitToList(args[2])
       : Collections.emptyList();
     return Lists
-      .newArrayList(ObjectIterator.getLoop(var))
+      .newArrayList(ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys()))
       .stream()
       .sorted(
         Comparator.comparing(

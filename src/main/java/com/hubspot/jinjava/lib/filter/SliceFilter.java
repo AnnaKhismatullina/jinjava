@@ -60,7 +60,7 @@ public class SliceFilter implements Filter {
 
   @Override
   public Object filter(Object var, JinjavaInterpreter interpreter, String... args) {
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
 
     if (args.length < 1) {
       throw new TemplateSyntaxException(

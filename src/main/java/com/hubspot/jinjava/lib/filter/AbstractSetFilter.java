@@ -1,5 +1,6 @@
 package com.hubspot.jinjava.lib.filter;
 
+import com.hubspot.jinjava.JinjavaConfig;
 import com.hubspot.jinjava.interpret.JinjavaInterpreter;
 import com.hubspot.jinjava.interpret.TemplateSyntaxException;
 import com.hubspot.jinjava.util.ForLoop;
@@ -21,9 +22,9 @@ public abstract class AbstractSetFilter implements AdvancedFilter {
     return args[0];
   }
 
-  protected Set<Object> objectToSet(Object var) {
+  protected Set<Object> objectToSet(Object var, JinjavaConfig config) {
     Set<Object> result = new LinkedHashSet<>();
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, config.isIterateOverMapKeys());
     while (loop.hasNext()) {
       result.add(loop.next());
     }

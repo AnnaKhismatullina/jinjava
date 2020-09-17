@@ -60,7 +60,7 @@ public class JoinFilter implements Filter {
       attr = args[1];
     }
 
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
     boolean first = true;
     while (loop.hasNext()) {
       Object val = loop.next();

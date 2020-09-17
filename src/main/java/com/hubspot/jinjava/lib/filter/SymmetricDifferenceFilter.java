@@ -37,8 +37,8 @@ public class SymmetricDifferenceFilter extends AbstractSetFilter {
   ) {
     return new ArrayList<>(
       Sets.symmetricDifference(
-        objectToSet(var),
-        objectToSet(parseArgs(interpreter, args))
+        objectToSet(var, interpreter.getConfig()),
+        objectToSet(parseArgs(interpreter, args), interpreter.getConfig())
       )
     );
   }

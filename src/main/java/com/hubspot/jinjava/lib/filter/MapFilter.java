@@ -56,7 +56,7 @@ public class MapFilter implements AdvancedFilter {
     Object[] args,
     Map<String, Object> kwargs
   ) {
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
 
     if (args.length < 1 && kwargs.size() < 1) {
       throw new TemplateSyntaxException(

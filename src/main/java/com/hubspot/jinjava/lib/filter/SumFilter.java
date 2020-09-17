@@ -54,7 +54,7 @@ public class SumFilter implements AdvancedFilter {
     Object[] args,
     Map<String, Object> kwargs
   ) {
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
 
     BigDecimal sum = BigDecimal.ZERO;
     String attr = kwargs.containsKey("attribute")

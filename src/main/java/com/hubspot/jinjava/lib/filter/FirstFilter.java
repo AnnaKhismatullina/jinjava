@@ -31,7 +31,7 @@ public class FirstFilter implements Filter {
 
   @Override
   public Object filter(Object var, JinjavaInterpreter interpreter, String... args) {
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
     return loop.next();
   }
 }

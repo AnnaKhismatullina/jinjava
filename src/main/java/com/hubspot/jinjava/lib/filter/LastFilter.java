@@ -31,7 +31,7 @@ public class LastFilter implements Filter {
 
   @Override
   public Object filter(Object var, JinjavaInterpreter interpreter, String... args) {
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
     Object last = null;
 
     while (loop.hasNext()) {

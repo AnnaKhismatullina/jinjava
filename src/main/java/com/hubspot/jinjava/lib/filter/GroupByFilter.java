@@ -63,7 +63,7 @@ public class GroupByFilter implements Filter {
 
     String attr = args[0];
 
-    ForLoop loop = ObjectIterator.getLoop(var);
+    ForLoop loop = ObjectIterator.getLoop(var, interpreter.getConfig().isIterateOverMapKeys());
     Multimap<String, Object> groupBuckets = LinkedListMultimap.create();
     Map<String, Object> groupMapRaw = new HashMap<>();
 
